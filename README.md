@@ -36,40 +36,7 @@ geocoder/
 g++ src/main.cpp src/geocoder.cpp -I include/ -o geocoder -std=c++17 -O2
 ```
 
-### For Development (with debugging)
-
-```bash
-g++ src/main.cpp src/geocoder.cpp -I include/ -o geocoder -std=c++17 -g -Wall -Wextra
-```
-
 ## Usage
-
-### Basic Example
-
-```cpp
-#include "geocoder.h"
-#include <iostream>
-
-int main() {
-    // Load locations from CSV file
-    std::vector<Location> locations = loadLocations("data/locations.csv");
-
-    if (locations.empty()) {
-        std::cerr << "Could not load location data." << std::endl;
-        return 1;
-    }
-
-    // Build the K-D Tree
-    KDTree geocoder(locations);
-
-    // Query for nearest location to Paris coordinates
-    Location query = {"", 48.8566, 2.3522};
-    Location nearest = geocoder.findNearestNeighbor(query);
-
-    std::cout << "Nearest location: " << nearest.name << std::endl;
-    return 0;
-}
-```
 
 ### Running the Example
 
@@ -95,67 +62,6 @@ Tokyo,35.6762,139.6503
 Sydney,-33.8688,151.2093
 Paris,48.8566,2.3522
 ```
-
-## API Reference
-
-### Data Structures
-
-#### `Location`
-
-```cpp
-struct Location {
-    std::string name;      // Name of the location
-    double latitude;       // Latitude in decimal degrees
-    double longitude;      // Longitude in decimal degrees
-};
-```
-
-### Functions
-
-#### `loadLocations(const std::string& filename)`
-
-- **Description**: Loads location data from a CSV file
-- **Parameters**: `filename` - Path to the CSV file
-- **Returns**: `std::vector<Location>` - Vector of loaded locations
-- **Example**:
-  ```cpp
-  auto locations = loadLocations("data/cities.csv");
-  ```
-
-#### `haversineDistance(const Location& loc1, const Location& loc2)`
-
-- **Description**: Calculates the great-circle distance between two points on Earth
-- **Parameters**: Two `Location` objects
-- **Returns**: `double` - Distance in kilometers
-- **Example**:
-  ```cpp
-  Location nyc = {"New York", 40.7128, -74.0060};
-  Location london = {"London", 51.5074, -0.1278};
-  double distance = haversineDistance(nyc, london);
-  ```
-
-### Classes
-
-#### `KDTree`
-
-##### Constructor
-
-```cpp
-KDTree(std::vector<Location>& locations)
-```
-
-- **Description**: Builds a K-D Tree from the provided locations
-- **Parameters**: `locations` - Vector of locations to index
-
-##### Methods
-
-```cpp
-Location findNearestNeighbor(const Location& query)
-```
-
-- **Description**: Finds the nearest location to the query point
-- **Parameters**: `query` - The location to search near
-- **Returns**: `Location` - The nearest location in the dataset
 
 ## Algorithm Details
 
