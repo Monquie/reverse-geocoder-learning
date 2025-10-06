@@ -2,8 +2,6 @@
 #include "geocoder.h"
 
 int main() {
-    // Note: The main function from the previous response can be placed here.
-    // Ensure the path to the CSV file is correct, e.g., "data/locations.csv"
     std::vector<Location> locations = loadLocations("data/locations.csv");
     if (locations.empty()) {
         std::cerr << "Could not load location data." << std::endl;
