@@ -92,23 +92,8 @@ The K-D Tree provides excellent performance for nearest neighbor searches:
 - **Medium datasets** (1,000-100,000 locations): Sub-millisecond searches
 - **Large datasets** (>100,000 locations): Still very fast due to logarithmic complexity
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Submit a pull request
-
-## License
-
-This project is open source. Feel free to use, modify, and distribute as needed.
-
 ## Future Enhancements
 
 - [ ] Support for different distance metrics
 - [ ] Multi-threaded tree building
 - [ ] Range queries (find all locations within a radius)
-- [ ] Dynamic insertion/deletion of locations
-- [ ] Serialization of built trees for faster startup
-- [ ] Integration with mapping APIs
